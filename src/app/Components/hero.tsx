@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
+import Image from "next/image";
 
 interface Clientside {
     id: number;
@@ -8,7 +9,7 @@ interface Clientside {
     description:string;
     category:string;
     image:string;
-    isNew: Boolean;
+    isNew: boolean;
     brand: string;
 
 }
@@ -18,7 +19,7 @@ const Hero = () => {
 
 
     useEffect(() => {
-    const fetchData = async () => {
+    const fetchdata = async () => {
         const response = await fetch(
             "https://jsonserver.reactbd.com/phonecase"
         );
@@ -26,7 +27,7 @@ const Hero = () => {
         console.log ("clientside", parsedResponse);
         setData(parsedResponse);
     };
-    fetchData();
+    fetchdata();
     });
 
     return (
@@ -41,7 +42,7 @@ const Hero = () => {
                     <p>brand: {`${fetch.brand}`}</p>
                     
                     <div><strong>image:</strong>
-                    <img src={fetch.image} alt={fetch.title}></img>
+                    <Image src={fetch.image} alt={fetch.title}></Image>
                     </div>
                     <div className="border-[1px] border-gray-300 rounded-md overflow-hidden hover:border-gray-950 duration-300">
 By Aisha
